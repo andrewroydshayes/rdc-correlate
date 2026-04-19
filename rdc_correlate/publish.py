@@ -36,7 +36,7 @@ def publish_findings(
     clone_dir = os.path.join(local_clone_root, "rdc-protocol-research")
 
     if not os.path.isdir(clone_dir):
-        _run(["gh", "repo", "clone", research_repo, clone_dir, "--", "--quiet"])
+        _run(["git", "clone", "--quiet", f"https://github.com/{research_repo}.git", clone_dir])
     else:
         _run(["git", "fetch", "--quiet", "origin"], cwd=clone_dir)
         _run(["git", "checkout", "--quiet", "main"], cwd=clone_dir)
