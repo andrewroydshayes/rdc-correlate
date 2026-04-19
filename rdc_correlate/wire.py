@@ -43,20 +43,26 @@ def parse_tlv_records(buf):
         i += lf
 
 
-def parse_pcap_payloads(pcap_path):
+def parse_pcap_payloads(pcap_path, rdc_ip=None, cloud_port=5253):
     """Use tshark to extract the client-to-cloud TLV stream from a pcap file.
 
     Yields (wall_ts_s, param_id, vlen, value_bytes). Relies on tshark CLI
     (apt install tshark).
+
+    `rdc_ip` is optional — narrows the filter to a specific source IP. If
+    omitted, every packet to tcp.dstport==cloud_port is considered (fine for a
+    single-RDC bridge capture).
     """
     import subprocess
     from collections import defaultdict
 
+    src_filter = f"ip.src=={rdc_ip} and " if rdc_ip else ""
+    filter_expr = f"{src_filter}tcp.dstport=={cloud_port} and tcp.len>0"
     try:
         out = subprocess.check_output(
             [
                 "tshark", "-r", pcap_path,
-                "-Y", "ip.src==192.168.4.50 and tcp.dstport==5253 and tcp.len>0",
+                "-Y", filter_expr,
                 "-T", "fields",
                 "-e", "frame.time_epoch", "-e", "tcp.stream",
                 "-e", "tcp.seq", "-e", "tcp.payload",

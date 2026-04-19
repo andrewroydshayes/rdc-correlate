@@ -17,7 +17,7 @@ from rdc_correlate.db import cloud_fields_between, connect, wire_records_between
 from rdc_correlate.publish import publish_findings
 
 
-DEFAULT_DB = "/home/andrew/kohler_corr/kohler.sqlite"
+DEFAULT_DB = "/var/lib/rdc-correlate/kohler.sqlite"
 DEFAULT_ENV = "/etc/kohler-correlation.env"
 
 

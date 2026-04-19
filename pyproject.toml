@@ -9,7 +9,7 @@ description = "Correlates Kohler RDC TLV wire protocol against Rehlko cloud API 
 readme = "README.md"
 requires-python = ">=3.10"
 license = {text = "MIT"}
-authors = [{name = "Andrew Hayes"}]
+authors = [{name = "andrewroydshayes"}]
 dependencies = [
     "requests>=2.25",
 ]

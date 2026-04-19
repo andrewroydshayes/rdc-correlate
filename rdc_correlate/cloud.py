@@ -13,9 +13,17 @@ except ImportError:
 
 TOKEN_URL = "https://kohler-homeenergy.okta.com/oauth2/default/v1/token"
 API_BASE = "https://api.hems.rehlko.com"
+OAUTH_SCOPE = "openid profile offline_access email"
+
+# NOTE: CLIENT_KEY and API_KEY below are the Rehlko mobile app's OWN OAuth client
+# credentials and application key — they identify "the app" to Okta / the Rehlko
+# API, not any individual user. They are the same for every install of the
+# official Rehlko app and are baked into the MIT-licensed `kohlerlibs/aiokem`
+# library (https://github.com/kohlerlibs/aiokem) which this code mirrors.
+# User-specific credentials (email + password) live in /etc/kohler-correlation.env
+# and are NEVER committed to this repo.
 CLIENT_KEY = "MG9hMXFpY3BkYWdLaXdFekYxZDg6d3Raa1FwNlY1T09vMW9PcjhlSFJHTnFBWEY3azZJaXhtWGhINHZjcnU2TWwxSnRLUE5obXdsMEN1MGlnQkVIRg=="
 API_KEY = "pgH7QzFHJx4w46fI~5Uzi4RvtTwlEXp"
-OAUTH_SCOPE = "openid profile offline_access email"
 
 
 def load_env(env_path):

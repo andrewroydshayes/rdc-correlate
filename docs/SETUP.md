@@ -84,9 +84,9 @@ gh repo view andrewroydshayes/rdc-protocol-research
 ## 5. Run correlation
 
 ```bash
-# Against the live kohler.sqlite (adjust path if different):
+# Adjust --db to wherever your populated sqlite lives:
 sudo /opt/rdc-correlate/venv/bin/python -m rdc_correlate correlate \
-  --db /home/andrew/kohler_corr/kohler.sqlite \
+  --db /var/lib/rdc-correlate/kohler.sqlite \
   --out /tmp/findings.json \
   --r-threshold 0.95 \
   --min-n 30
