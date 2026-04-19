@@ -26,7 +26,7 @@ Pi already running rdc-proxy). The short version:
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/andrewroydshayes/rdc-correlate/main/install/install.sh \
-  | sudo GITHUB_OWNER=andrewroydshayes bash
+  | sudo bash
 
 # Once credentials + gh auth are set up:
 sudo /opt/rdc-correlate/venv/bin/python -m rdc_correlate correlate --out /tmp/f.json

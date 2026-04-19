@@ -5,8 +5,7 @@
 
 set -euo pipefail
 
-GITHUB_OWNER=${GITHUB_OWNER:-andrewroydshayes}
-REPO_URL=${REPO_URL:-https://github.com/${GITHUB_OWNER}/rdc-correlate.git}
+REPO_URL=${REPO_URL:-https://github.com/andrewroydshayes/rdc-correlate.git}
 INSTALL_DIR=${INSTALL_DIR:-/opt/rdc-correlate}
 BRANCH=${BRANCH:-}
 

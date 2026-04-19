@@ -32,7 +32,7 @@ This is optional — rdc-correlate is a plain Python CLI and runs standalone.
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/andrewroydshayes/rdc-correlate/main/install/install.sh \
-  | sudo GITHUB_OWNER=andrewroydshayes bash
+  | sudo bash
 ```
 
 This installs into `/opt/rdc-correlate/`, creates a venv, and apt-installs `gh`,
