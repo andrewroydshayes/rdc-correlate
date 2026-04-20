@@ -5,6 +5,34 @@
 
 set -euo pipefail
 
+# ── Disclaimer ─────────────────────────────────────────────────────────────
+if [[ "${RDC_SKIP_DISCLAIMER:-}" != "1" ]]; then
+cat <<'DISCLAIMER'
+
+  ╔═══════════════════════════════════════════════════════════════════════╗
+  ║  rdc-correlate — unofficial community project                         ║
+  ║                                                                       ║
+  ║  This tool uses YOUR Kohler/Rehlko credentials to make AUTOMATED      ║
+  ║  calls to Kohler's cloud API. A strict reading of most consumer-      ║
+  ║  cloud TOS language (including Kohler's) restricts API use outside    ║
+  ║  the official mobile app. Enforcement at personal scale appears       ║
+  ║  nonexistent (the public MIT-licensed aiokem library has done the     ║
+  ║  same thing for years without incident), but that's not legal         ║
+  ║  advice. Read Kohler's TOS and decide for yourself.                   ║
+  ║                                                                       ║
+  ║  Credentials stay local (chmod 600, /etc/kohler-correlation.env).     ║
+  ║  MIT licensed "AS IS." No warranty. No liability.                     ║
+  ║  Source: https://github.com/andrewroydshayes/rdc-correlate            ║
+  ╚═══════════════════════════════════════════════════════════════════════╝
+
+DISCLAIMER
+for i in 10 9 8 7 6 5 4 3 2 1; do
+  printf "\r  continuing in %2ds — press Ctrl+C to abort..." "$i"
+  sleep 1
+done
+printf "\r%60s\r\n" ""
+fi
+
 REPO_URL=${REPO_URL:-https://github.com/andrewroydshayes/rdc-correlate.git}
 INSTALL_DIR=${INSTALL_DIR:-/opt/rdc-correlate}
 BRANCH=${BRANCH:-}
