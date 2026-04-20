@@ -8,6 +8,41 @@ When it finds new high-confidence mappings, it opens a PR on
 [rdc-protocol-research](https://github.com/andrewroydshayes/rdc-protocol-research)
 that updates `PARAMETERS.md` with the discoveries.
 
+## ⚠️ Use at your own risk
+
+This is an **unofficial, community project** — not made, endorsed, or
+supported by Kohler or Rehlko. It runs on your hardware, reads packet captures
+from your own network, and logs into Kohler's cloud API using **your**
+credentials. **You are responsible for your install.**
+
+**Your Rehlko credentials stay local.** The tool reads your email and password
+from `/etc/kohler-correlation.env` (root-owned, chmod 600) and uses them
+**only** to authenticate against Kohler's own OAuth/API endpoints — exactly
+the same endpoints the official Rehlko mobile app uses. They are never
+transmitted anywhere else, stored in any log, or sent to the developer. The
+OAuth `CLIENT_KEY` and `API_KEY` baked into the code are the mobile app's own
+public identifiers, shared by every install of the official app (see the
+comment in `rdc_correlate/cloud.py`).
+
+**Nothing else leaves your Pi.** No telemetry, no analytics, no phone-home.
+Outbound network traffic is limited to: Kohler's cloud API (your existing
+account), GitHub (for opening PRs on the public research repo), and apt/PyPI
+for install-time package downloads.
+
+**The source is open; read it before running it.** MIT-licensed, ~800 lines
+total. If you'd rather not `curl | sudo bash`, clone the repo, read it, run
+it yourself.
+
+**No warranty.** Per the MIT license, the software is provided **"AS IS,"
+without warranty of any kind**, express or implied. The authors are not liable
+for any claim, damages, or other liability arising from use of this software.
+
+**Your relationship with Kohler/Rehlko is yours.** Using Kohler's cloud API
+with your own credentials for your own generator sits in a gray area of their
+terms of service. The developer's position is that this is reasonable personal
+use — but read Kohler's TOS yourself and make your own call. This tool makes
+it easy to stop using the API at any time: it's just a Python script.
+
 ## What it does
 
 1. Reads `kohler.sqlite` — a database populated by the rdc-proxy pcap capture
@@ -51,4 +86,5 @@ pytest
 
 ## License
 
-MIT.
+[MIT](LICENSE). Provided "AS IS," without warranty. See the full disclaimer
+in the [Use at your own risk](#️-use-at-your-own-risk) section above.
